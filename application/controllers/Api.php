@@ -1,12 +1,13 @@
 <?php
 class Api extends CI_Controller
 {
+    protected $user = [] ;
     public function index()
     {
         echo "index of Api";
     }
 
-    public function get()
+    public function getAll()
     {
         $param = $_POST;
         $as = $this->db->select("*")->from("address")->get()->row();
@@ -14,8 +15,8 @@ class Api extends CI_Controller
         var_dump($param)    ;
     }
 
-    public function getAll(){
-        $param = $_;
+    public function get(){
+        $user = require_once("userarray.php");
     }
 }
 ?>

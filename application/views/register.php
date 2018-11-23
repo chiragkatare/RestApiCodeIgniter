@@ -2,39 +2,41 @@
 <head>
 <?php include("layouts/headers.html"); ?>
 <title>Register</title>
-<!-- <script type = "text/javascript" src = "<?php echo base_url();?>js/main.js"></script>
-<script></script> -->
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+<script src="<?php echo base_url();?>jquery/formvalidation.js"></script>
 </head>
 
 <body>
+<!-- <?php echo form_open('validation/register',array('id'=>'regform','method'=>'post'));?> -->
 <form id="regform" method="POST"> 
         <h2>Registration Form</h2>
         <div class="container">
 
             <label for="fname"><b>First Name</b></label>
-            <input type="text" placeholder="Enter First Name" name="fname" required>
+            <div class="error" id="fnameerror"></div>
+            <input type="text" placeholder="Enter First Name" id="fname" name="fname">
 
+            
             <label for="lname"><b>Last Name</b></label>
-            <input type="text" placeholder="Enter Last Name" name="lname" required>
-
-            <label for="userid"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="userid" required>
+            <div class="error" id="lnameerror"></div>
+            <input type="text" placeholder="Enter Last Name" id="lname" name="lname">
 
             <label for="email"><b>Email</b></label>
-            <input type="email" placeholder="Enter Email" name="email" required>
+            <div class="error" id="emailerror"></div>
+            <input type="email" placeholder="Enter Email" id="email" name="email">
 
             <label for="password"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <div class="error" id="passerror"></div>
+            <input type="password" placeholder="Enter Password" id="password" name="password">
 
             <label for="rpassword"><b>Reapeat Password</b></label>
-            <input type="password" placeholder="Enter Password Again" name="rpassword" required>
+            <div class="error" id="rpasserror"></div>
+            <input type="password" placeholder="Enter Password Again" id="rpassword" name="rpassword">
 
-
-            <button id="register" >Register</button>
+            <!-- <?php echo form_submit(['id'=>'register']) ?> -->
+            <button id="register" type="submit" onclick="validate()">Register</button>
             
-        </div>
-        
-
+        </div>  
     </form>
 </body>
 

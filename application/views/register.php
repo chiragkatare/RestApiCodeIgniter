@@ -26,15 +26,15 @@
             <input type="email" placeholder="Enter Email" id="email" name="email">
 
             <label for="password"><b>Password</b></label>
-            <div class="error" id="passerror"></div>
+            <div class="error" id="passworderror"></div>
             <input type="password" placeholder="Enter Password" id="password" name="password">
 
             <label for="rpassword"><b>Reapeat Password</b></label>
-            <div class="error" id="rpasserror"></div>
+            <div class="error" id="rpassworderror"></div>
             <input type="password" placeholder="Enter Password Again" id="rpassword" name="rpassword">
 
             <!-- <?php echo form_submit(['id'=>'register']) ?> -->
-            <button id="register" type="submit" onclick="validate()">Register</button>
+            <button id="register" type="submit" onclick="regvalidate()">Register</button>
             
         </div>  
     </form>

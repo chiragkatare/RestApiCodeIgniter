@@ -30,8 +30,8 @@
     }
 
     .error {
-        float:left;
-        font-size: 12px;
+        float:right;
+        font-size: 13px;
         color:#f44336;
     }
 

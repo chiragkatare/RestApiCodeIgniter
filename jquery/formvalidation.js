@@ -1,4 +1,4 @@
-function validate() {
+function regvalidate() {
     $('#regform').validate({
         rules: {
             fname: 'required',
@@ -26,7 +26,7 @@ function validate() {
             },
             password: {
                 required: 'Password Required',
-                minlength: 'Atleast * characters required'
+                minlength: 'Atleast 8 characters required'
             },
             rpassword: {
                 required: 'Password Empty',
@@ -39,9 +39,9 @@ function validate() {
             else if (element.attr("name") == "lname")
                 $("#lnameerror").html(error);
             else if (element.attr("name") == "password")
-                $("#passerror").html(error);
+                $("#passworderror").html(error);
             else if (element.attr("name") == "rpassword")
-                $("#rpasserror").html(error);
+                $("#rpassworderror").html(error);
             else if (element.attr("name") == "email")
                 $("#emailerror").html(error);
         },
@@ -56,13 +56,46 @@ function validate() {
                 url: 'http://localhost/codeigniter/users/register',
                 dataType: 'json',
                 data: postdata,
-                success: function (result) {
-                    alert(JSON.stringify(result));
-                },
+                success: showResp,
                 error: function (error) {
                     alert(JSON.stringify(error));
                 }
             });
+        }
+    });
+}
+
+function showResp(result) {
+    if (result.code == 400) {
+        $.each(result.message, function (index, element) {
+            if (element != "") {
+                $("#" + index + "error").html(element);
+            }
+        });
+    }
+    else if (result.code == 200) {
+        alert("Registration Successful");
+        window.location.href=result.message;
+    }
+
+}
+
+function phpvalid() {
+    var postdata = {};
+    var formdata = $("#regform").serializeArray();
+    $(formdata).each(function (index, obj) {
+        postdata[obj.name] = obj.value;
+    });
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost/codeigniter/users/valid',
+        dataType: 'json',
+        data: formdata,
+        success: function (result) {
+            alert(JSON.stringify(result));
+        },
+        error: function (error) {
+            alert(JSON.stringify(error));
         }
     });
 }

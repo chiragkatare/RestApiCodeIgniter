@@ -56,6 +56,7 @@ $route['user/(:num)'] = 'api/get/$1';
 $route['user/del/(:num)'] = 'api/deleteuser/$1';
 $route["users/login"] = 'user/login';
 $route["users/register"] = 'user/register';
+$route["users/valid"] = "user/validation";
 $route["users/plogin"] = "user/plogin";
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
